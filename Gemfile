@@ -63,7 +63,6 @@ group :development, :test do
   gem 'ruby-debug19',      '0.11.6', :platforms => :ruby_19
   gem 'shoulda-matchers',  '2.1'
   gem 'single_test',       '0.4.0'
-  gem 'spork',             '0.9.2'
   gem 'thin'
   gem 'timecop',           '~> 0.6.3'
 end
