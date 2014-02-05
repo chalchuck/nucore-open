@@ -233,6 +233,7 @@ GEM
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby-debug-base19 (>= 0.11.19)
+    ruby-oci8 (2.1.5)
     ruby-ole (1.2.11.7)
     ruby-rc4 (0.1.5)
     ruby_core_source (0.1.5)
@@ -290,7 +291,7 @@ DEPENDENCIES
   activerecord-oracle_enhanced-adapter (= 1.4.2)
   awesome_nested_set (= 2.1.6)
   awesome_print (= 1.1.0)
-  bootstrap-sass
+  bootstrap-sass (~> 2.3.2)
   c2po (~> 1.0.0)!
   cancan (= 1.6.10)
   capistrano (= 2.15.4)
@@ -307,9 +308,9 @@ DEPENDENCIES
   exception_notification (~> 4.0.1)
   factory_girl_rails (= 4.2.1)
   fast-aes (= 0.1.1)
-  font-awesome-rails
+  font-awesome-rails (~> 3.2.0)
   foreigner (= 1.1.1)
-  haml (= 4.0.3)
+  haml (~> 4.0.3)
   jquery-rails (~> 2.1.4)
   jquery-ui-sass-rails
   mysql2 (~> 0.3.11)
@@ -325,6 +326,7 @@ DEPENDENCIES
   rake
   rspec-rails (= 2.13.2)
   ruby-debug19 (= 0.11.6)
+  ruby-oci8 (= 2.1.5)
   sass-rails (~> 3.2.6)
   shoulda-matchers (= 2.1)
   simple_form
