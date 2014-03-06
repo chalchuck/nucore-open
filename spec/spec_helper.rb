@@ -159,6 +159,14 @@ Spork.each_run do
     assert dead
   end
 
+  config.around(:each, :timecop_freeze) do |example|
+    # freeze time to specific time by defining let(:now)
+    time = defined?(now) ? now : Time.zone.now
+    Timecop.freeze time do
+      example.call
+    end
+  end
+
   #
   # Factory wrapper for creating an account with owner
   def create_nufs_account_with_owner(owner=:owner)
