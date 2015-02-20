@@ -5,6 +5,18 @@ describe Ability do
   let(:facility) { create(:facility) }
   let(:stub_controller) { OpenStruct.new }
 
+  shared_examples_for "it can manage chart strings" do
+    it "can manage chart strings" do
+      expect(ability.can?(:manage_chart_strings, price_group)).to be true
+    end
+  end
+
+  shared_examples_for "it cannot manage chart strings" do
+    it "cannot manage chart strings" do
+      expect(ability.can?(:manage_chart_strings, price_group)).to be false
+    end
+  end
+
   shared_examples_for "it can manage price group members" do
     it "can manage its members" do
       expect(ability.can?(:manage_members, price_group)).to be true
@@ -12,7 +24,7 @@ describe Ability do
   end
 
   shared_examples_for "it cannot manage price group members" do
-    it "can manage its members" do
+    it "cannot manage its members" do
       expect(ability.can?(:manage_members, price_group)).to be false
     end
   end
@@ -24,17 +36,20 @@ describe Ability do
       context "when the price group has a facility" do
         let(:price_group) { create(:price_group, facility: facility) }
 
+        it_behaves_like "it can manage chart strings"
         it_behaves_like "it can manage price group members"
       end
 
       context "when the price group is global" do
         let(:price_group) { create(:price_group, :global) }
 
+        it_behaves_like "it can manage chart strings"
         it_behaves_like "it cannot manage price group members"
 
         context "when it's the cancer center price group" do
           let(:price_group) { create(:price_group, :cancer_center) }
 
+          it_behaves_like "it can manage chart strings"
           it_behaves_like "it can manage price group members"
         end
       end
@@ -48,17 +63,20 @@ describe Ability do
       context "when the price group has a facility" do
         let(:price_group) { create(:price_group, facility: facility) }
 
+        it_behaves_like "it can manage chart strings"
         it_behaves_like "it can manage price group members"
       end
 
       context "when the price group is global" do
         let(:price_group) { create(:price_group, :global) }
 
+        it_behaves_like "it cannot manage chart strings"
         it_behaves_like "it cannot manage price group members"
 
         context "when it's the cancer center price group" do
           let(:price_group) { create(:price_group, :cancer_center) }
 
+          it_behaves_like "it cannot manage chart strings"
           it_behaves_like "it cannot manage price group members"
         end
       end

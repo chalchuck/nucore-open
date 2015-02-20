@@ -16,6 +16,7 @@ class Ability
 
     if user.administrator?
       if resource.is_a?(PriceGroup)
+        can :manage_chart_strings, resource
         can :manage_members, resource if resource.admin_editable?
       else
         can :manage, :all
@@ -24,7 +25,7 @@ class Ability
     end
 
     if resource.is_a?(PriceGroup) && !resource.global? && user.manager_of?(resource.facility)
-      can :manage_members, resource
+      can [:manage_chart_strings, :manage_members], resource
     end
 
     can :list, Facility if user.facilities.size > 0 and controller.is_a?(FacilitiesController)
